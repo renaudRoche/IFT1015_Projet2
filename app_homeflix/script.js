@@ -1,13 +1,13 @@
 function validateUsername(value){
 
-  value = RegExp(value);
+  //value = RegExp(value);
  
   var courriel = /^[a-z0-9.]+@homeflix.(org|ca|com)$/;
 
-  var username = /[a-zA-Z]{5,}[a-zA-Z0-9]+/;  // a revoir car ca inclut les caracteres special 
+  var username1 = /[a-zA-Z]{5}/; // ?!?
 
-  return (courriel.test(value) || username.test(value)) 
-
+  var username2 = /[a-zA-Z0-9]{0,}/; 
+  return (courriel.test(value) ||(username1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
 
 }
 
