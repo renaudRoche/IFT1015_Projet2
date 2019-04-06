@@ -91,7 +91,7 @@ function displayMovie(movie){
 	return {title: movie.title,genres: movie.genres, element: movie.element}
 }
 
-var element = createElement(li);
+/*var element = createElement(li);
 	element.className = "c-main_item o-layout_item u-1/4";
 	var card = element.createElement(div);
 		card.className = "c-main_item_card";
@@ -140,4 +140,4 @@ var element = createElement(li);
 						ratingText.innerHTML = // rating du film 
 		var subTitle = card.createElement(h2);
 			subTitle.className = "c-main_item_title";
-			subTitle.innerHTML = //titre du film
+			subTitle.innerHTML = //titre du film */
