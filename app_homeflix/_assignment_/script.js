@@ -87,56 +87,76 @@ var SHOW_SAMPLE = true;
 
 function displayMovie(movie){
 	console.log({title: movie.title,genres: movie.genres, element: movie.element});
-	var element = document.createElement("li");
-	element.className = "c-main_item o-layout_item u-1/4";
-	var card = element.createElement("div");
-		card.className = "c-main_item_card";
-		var cover = card.createElement("div");
-			cover.className = "c-main_item_cover -red";//color
-			var preview = cover.createElement("p");
-				preview.className = "c-main_item_preview";
-	//			preview.innerHTML = //premiere lettre des titres
-			var details = cover.createElement("div");
-				details.className = "c-main_item_details";
-				var title = details.createElement("h3");
-					title.className = "c-main_item_header";
-					title.innerHTML = "Title :";
-					var titleText = title.createElement("p");
-						titleText.className = "c-main_item_text";
-						titleText.innerHTML = movie.title ;
-				var genre = details.createElement("h3");
-					genre.className = "c-main_item_header";
-					genre.innerHTML = "Genre :";
-					var genreText = genre.createElement("p");
-						genreText.className = "c-main_item_text";
-						genreText.innerHTML = movie.genres;
-				var synopsis = details.createElement("h3");
-					synopsis.className = "c-main_item_header";
-					synopsis.innerHTML = "Synopsis :";
-					var synText = synopsis.createElement("p");
-						synText.className = "c-main_item_text";
-	//					synText.innerHTML = //synopsis du film
-				var length = details.createElement("h3");
-					length.className = "c-main_item_header";
-					length.innerHTML = "Length :";
-					var lengthText = length.createElement("span");
-						lengthText.className = "c-main_item_span";
-	//					lengthText.innerHTML = // movie length
-				var language = details.createElement("h3");
-					language.className = "c-main_item_header";
-					language.innerHTML = "Language :";
-					var languageText = language.createElement("span");
-						languageText.className = "c-main_item_span";
-	//					languageText.innerHTML = //langages du film
-				var rating = details.createElement("h3");
-					rating.className = "c-main_item_header";
-					rating.innerHTML = "Rating :";
-					var ratingText = rating.createElement("span");
-						ratingText.className = "c-main_item_span";
-	//					ratingText.innerHTML = // rating du film 
-		var subTitle = card.createElement("h2");
-			subTitle.className = "c-main_item_title";
-			subTitle.innerHTML = movie.title ;
+	var movieList = document.createElement("ul");
+		movieList.className = "c-main_list o-layout o-wrapper -gutter-small";
+		var element = document.createElement("li");
+			element.className = "c-main_item o-layout_item u-1/4";
+			movieList.appendChild(element);
+			var card = document.createElement("div");
+				element.appendChild(card);
+				document.className = "c-main_item_card";
+				var cover = document.createElement("div");
+					cover.className = "c-main_item_cover -red";//color
+					card.appendChild(cover);
+					var preview = document.createElement("p");
+						preview.className = "c-main_item_preview";
+						cover.appendChild(preview);
+			//			preview.innerHTML = //premiere lettre des titres
+					var details = document.createElement("div");
+						details.className = "c-main_item_details";
+						cover.appendChild(details);
+						var title = document.createElement("h3");
+							title.className = "c-main_item_header";
+							details.appendChild(title);
+							title.innerHTML = "Title :";
+							var titleText = document.createElement("p");
+								titleText.className = "c-main_item_text";
+								title.appendChild(titleText);
+								titleText.innerHTML = movie.title ;
+						var genre = document.createElement("h3");
+							genre.className = "c-main_item_header";
+							details.appendChild(genre);
+							genre.innerHTML = "Genre :";
+							var genreText = document.createElement("p");
+								genreText.className = "c-main_item_text";
+								genre.appendChild(genreText);
+								genreText.innerHTML = movie.genres;
+						var synopsis = document.createElement("h3");
+							synopsis.className = "c-main_item_header";
+							details.appendChild(synopsis);
+							synopsis.innerHTML = "Synopsis :";
+							var synText = document.createElement("p");
+								synText.className = "c-main_item_text";
+								synopsis.appendChild(synText);
+			//					synText.innerHTML = //synopsis du film
+						var length = document.createElement("h3");
+							length.className = "c-main_item_header";
+							details.appendChild(length);
+							length.innerHTML = "Length :";
+							var lengthText = document.createElement("span");
+								lengthText.className = "c-main_item_span";
+								length.appendChild(lengthText);
+			//					lengthText.innerHTML = // movie length
+						var language = document.createElement("h3");
+							language.className = "c-main_item_header";
+							details.appendChild(language);
+							language.innerHTML = "Language :";
+							var languageText = document.createElement("span");
+								languageText.className = "c-main_item_span";
+								language.appendChild(languageText);
+			//					languageText.innerHTML = //langages du film
+						var rating = document.createElement("h3");
+							rating.className = "c-main_item_header";
+							details.appendChild(rating);
+							rating.innerHTML = "Rating :";
+							var ratingText = document.createElement("span");
+								ratingText.className = "c-main_item_span";
+								rating.appendChild(ratingText);
+			//					ratingText.innerHTML = // rating du film 
+			var subTitle = document.createElement("h2");
+				subTitle.className = "c-main_item_title";
+				card.appendChild(subTitle);
+				subTitle.innerHTML = movie.title ;
 	return {title: movie.title,genres: movie.genres, element: movie.element}
 }
 
