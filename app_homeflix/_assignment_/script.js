@@ -31,7 +31,7 @@ function searchMovies(movies,searchValue) {
 		if (movies[i].title.includes(searchValue))
 			listeFilms.push(movies[i]);
 	}
-	console.log("listeFilms",listeFilms);
+	//console.log("listeFilms",listeFilms);
 	return listeFilms;
 	
 } 
@@ -51,8 +51,8 @@ function sortMovies(movies, isAscending){
 
 
 function populateSelect(movies){
-	console.log("parametre movies dans populateSelect");
-	console.log(movies);
+	//console.log("parametre movies dans populateSelect");
+	//console.log(movies);
 	var listeGenre = [];
 	
 
@@ -69,9 +69,9 @@ function populateSelect(movies){
 
 function filterMovies(movies, genreFilter ){
 	var listeFilms = [];
-	console.log("parametre movies dans filterMovies");
-	console.log(movies);
-	console.log(genreFilter);
+	//console.log("parametre movies dans filterMovies");
+	//console.log(movies);
+	//console.log(genreFilter);
 	for (var i= 0; i< movies.length; i++){
 		for (var j = 0; j< movies[i].genres.length;j++){
 			if (movies[i].genres.includes(genreFilter))
@@ -83,15 +83,12 @@ function filterMovies(movies, genreFilter ){
 
 }
 
-var SHOW_SAMPLE = true;
-
 function displayMovie(movie){
-	console.log({title: movie.title,genres: movie.genres, element: movie.element});
-	var movieList = document.createElement("ul");
-		movieList.className = "c-main_list o-layout o-wrapper -gutter-small";
+	//console.log({title: movie.title,genres: movie.genres, element: movie.element});
+	var movieList = document.getElementsByTagName("ul");
 		var element = document.createElement("li");
 			element.className = "c-main_item o-layout_item u-1/4";
-			movieList.appendChild(element);
+			movieList[0].appendChild(element);
 			var card = document.createElement("div");
 				element.appendChild(card);
 				document.className = "c-main_item_card";
