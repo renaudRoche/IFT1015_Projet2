@@ -62,7 +62,7 @@ function populateSelect(movies){
 				listeGenre.push(movies[i].genres[j])
 		}
 	}
-	console.log(listeGenre);
+	//console.log(listeGenre);
     return listeGenre; 
  }
 
@@ -93,19 +93,20 @@ function displayMovie(movie){
 				element.appendChild(card);
 				document.className = "c-main_item_card";
 				var cover = document.createElement("div");
-					cover.className = "c-main_item_cover -red";//color
+					cover.className = "c-main_item_cover -red";     //color
 					card.appendChild(cover);
 					var preview = document.createElement("p");
 						preview.className = "c-main_item_preview";
 						cover.appendChild(preview);
-			//			preview.innerHTML = //premiere lettre des titres
+						var splitTitle = movie.title.split(" ");
+						preview.innerHTML = splitTitle[0].charAt(0).toUpperCase() + ((splitTitle.length>1)? splitTitle[1].charAt(0).toUpperCase() : "") + ((splitTitle.length>2)? splitTitle[2].charAt(0).toUpperCase() : "");
 					var details = document.createElement("div");
 						details.className = "c-main_item_details";
 						cover.appendChild(details);
 						var title = document.createElement("h3");
 							title.className = "c-main_item_header";
 							details.appendChild(title);
-							title.innerHTML = "Title :";
+							title.innerHTML = "Title : ";
 							var titleText = document.createElement("p");
 								titleText.className = "c-main_item_text";
 								title.appendChild(titleText);
@@ -113,43 +114,44 @@ function displayMovie(movie){
 						var genre = document.createElement("h3");
 							genre.className = "c-main_item_header";
 							details.appendChild(genre);
-							genre.innerHTML = "Genre :";
+							genre.innerHTML = "Genre : ";
 							var genreText = document.createElement("p");
 								genreText.className = "c-main_item_text";
 								genre.appendChild(genreText);
-								genreText.innerHTML = movie.genres;
+								genreText.innerHTML = movie.genres.join(", ");
 						var synopsis = document.createElement("h3");
 							synopsis.className = "c-main_item_header";
 							details.appendChild(synopsis);
-							synopsis.innerHTML = "Synopsis :";
+							synopsis.innerHTML = "Synopsis : ";
 							var synText = document.createElement("p");
 								synText.className = "c-main_item_text";
+				//				synText.style.textAlign = "justify";        juste un essai, pas génial, mais au cas où
 								synopsis.appendChild(synText);
-			//					synText.innerHTML = //synopsis du film
+								synText.innerHTML = movie.overview.slice(0,130) + ((movie.overview.length > 130) ? "..." : "");      //synopsis du film , ajusté longueur -> captain america, et voir pour pas couper les mots
 						var length = document.createElement("h3");
 							length.className = "c-main_item_header";
 							details.appendChild(length);
-							length.innerHTML = "Length :";
+							length.innerHTML = "Length : ";
 							var lengthText = document.createElement("span");
 								lengthText.className = "c-main_item_span";
 								length.appendChild(lengthText);
-			//					lengthText.innerHTML = // movie length
+								lengthText.innerHTML = Math.floor(movie.runtime/60) + "h" + movie.runtime%60 + "min";
 						var language = document.createElement("h3");
 							language.className = "c-main_item_header";
 							details.appendChild(language);
-							language.innerHTML = "Language :";
+							language.innerHTML = "Language : ";
 							var languageText = document.createElement("span");
 								languageText.className = "c-main_item_span";
 								language.appendChild(languageText);
-			//					languageText.innerHTML = //langages du film
+								languageText.innerHTML = movie.language; //langages du film , transformés?
 						var rating = document.createElement("h3");
 							rating.className = "c-main_item_header";
 							details.appendChild(rating);
-							rating.innerHTML = "Rating :";
+							rating.innerHTML = "Rating : ";
 							var ratingText = document.createElement("span");
 								ratingText.className = "c-main_item_span";
 								rating.appendChild(ratingText);
-			//					ratingText.innerHTML = // rating du film 
+								ratingText.innerHTML = movie.rating + "/10"; 
 			var subTitle = document.createElement("h2");
 				subTitle.className = "c-main_item_title";
 				card.appendChild(subTitle);
