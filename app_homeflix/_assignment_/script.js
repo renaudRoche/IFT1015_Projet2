@@ -69,8 +69,8 @@ function populateSelect(movies){
 
 function filterMovies(movies, genreFilter ){
 	var listeFilms = [];
-	//console.log("parametre movies dans filterMovies");
-	//console.log(movies);
+	console.log("parametre movies dans filterMovies");
+	console.log(movies);
 	//console.log(genreFilter);
 	for (var i= 0; i< movies.length; i++){
 		for (var j = 0; j< movies[i].genres.length;j++){
@@ -93,7 +93,11 @@ function displayMovie(movie){
 				element.appendChild(card);
 				document.className = "c-main_item_card";
 				var cover = document.createElement("div");
-					cover.className = "c-main_item_cover -red";     //color
+					var colorChosen = Math.floor(Math.random()*3);
+					if (colorChosen == 0) var color = "c-main_item_cover -green";
+					if (colorChosen == 1) var color = "c-main_item_cover -blue";
+					if (colorChosen == 2) var color = "c-main_item_cover -purple";
+					cover.className =color      //color
 					card.appendChild(cover);
 					var preview = document.createElement("p");
 						preview.className = "c-main_item_preview";
@@ -158,4 +162,3 @@ function displayMovie(movie){
 				subTitle.innerHTML = movie.title ;
 	return {title: movie.title,genres: movie.genres, element: movie.element}
 }
-
