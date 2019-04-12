@@ -7,15 +7,15 @@ function validateUsername(value){
   var username1 = /[a-zA-Z]{5}/; // ?!?
 
   var username2 = /[a-zA-Z0-9]{0,}/; 
-  return (courriel.test(value) ||(username1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
-
+  //return (courriel.test(value) ||(username1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
+  return true;
 }
 
 function validatePassword(value){
  
   var password = /(?=.*\d+)(?=.*[^A-Za-z0-9])(?=.*[A-Z]).{8,16}/;
-
-  return (password.test(value)) 
+  return true;
+  //return (password.test(value)) 
 }
 
 
@@ -93,10 +93,11 @@ function displayMovie(movie){
 				element.appendChild(card);
 				document.className = "c-main_item_card";
 				var cover = document.createElement("div");
-					var colorChosen = Math.floor(Math.random()*3);
+					var colorChosen = Math.floor(Math.random()*4);
 					if (colorChosen == 0) var color = "c-main_item_cover -green";
 					if (colorChosen == 1) var color = "c-main_item_cover -blue";
 					if (colorChosen == 2) var color = "c-main_item_cover -purple";
+					if (colorChosen == 3) var color = "c-main_item_cover -red";
 					cover.className =color      //color
 					card.appendChild(cover);
 					var preview = document.createElement("p");
