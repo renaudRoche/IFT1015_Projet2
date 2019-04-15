@@ -1,14 +1,17 @@
+// IFT1015_Projet2_Homeflix
+// Équipier 1 : Medina Mohamed
+// Équipier 2 : Renaud Roche-Garon
+
+/* La fonction validateUsername valide le nom d'utilisateur (ou le courriel) passé en paramètre.
+ * @param {string} value : Valeur du champs username
+ */
 function validateUsername(value){
 
-  //value = RegExp(value);
- 
+ //Commence par des lettres et des chiffres suivit de @homeflix. suivit de ca ou org ou com
   var courriel = /^[a-z0-9.]+@homeflix.(org|ca|com)$/;
 
-  //var username1 = /[a-zA-Z]{5}/; // ?!?
-
-  //var username2 = /[a-zA-Z0-9]{0,}/; 
-
   var username = true;
+  // Commence par avec 5 lettres minuscule ou majuscule
   for (var i = 0; i < 5; i++) {
   	if (!(value.charCodeAt(i) >= 65 && value.charCodeAt(i) <= 90 || 
           value.charCodeAt(i) >= 97 && value.charCodeAt(i) <= 122)){
@@ -16,6 +19,7 @@ function validateUsername(value){
         break;
     }
   }
+  // Suivit de lettres et de chiffres
   if (value.length > 5 && username)
   	for (var j = 5; j < value.length; j++) {
 		if (!(value.charCodeAt(j) >= 65 && value.charCodeAt(j) <= 90 || 
@@ -26,23 +30,34 @@ function validateUsername(value){
         }
 	}
 
-  return (courriel.test(value) ||username) //1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
-  //return true;
+  return (courriel.test(value) ||username) 
 }
 
+/* La fonction validatePassword valide le mot de passe passé en paramètre.
+ * @param {string} value : Valeur du champs username
+ */
 function validatePassword(value){
  
-  var password = /(?=.*\d+)(?=.*[^A-Za-z0-9])(?=.*[A-Z]).{8,16}/;
-  return true;
-  //return (password.test(value)) 
+  // Contient au moins une majuscule , un chiffre et un caractère spécial 
+  var password = /(?=.*\d+)(?=.*[^A-Za-z0-9])(?=.*[A-Z])./; //
+
+  return ((value.length > 7 && value.length < 16 ) && password.test(value));
+
 }
 
-
+/* La fonction updateHeader  met à jour le nom d'utilisateur dans le <header>.
+ * @param {string} username : Le nom de l'utilisateur qui vient de se connecter.
+ */
 
 function updateHeader(username){
 	document.getElementById('username').innerHTML = username;
 
 } 
+
+/* La fonction searchMovies retourne une liste de films dont le titre contient les caractères tappés dans la barre de recherche.
+ * @param {array} movies : Une liste de films disponibles.
+ * @param {string} searchValue: Valeur du champs search.
+ */
 
 function searchMovies(movies,searchValue) {
 	var listeFilms = [];
@@ -56,6 +71,10 @@ function searchMovies(movies,searchValue) {
 	return listeFilms;
 	
 } 
+/* La fonction sortMovies retourne une liste de films triée
+ * @param {array} movies :  La liste de films retournée par la fonction searchMovies.
+ * @param {boolean} isAscending: true - ordonne en ordre alphabétique (A vers Z)/ false -sinon (Z vers A).
+ */
 
 function sortMovies(movies, isAscending){
 	
@@ -70,6 +89,9 @@ function sortMovies(movies, isAscending){
 
 }
 
+/* La fonction populateSelect  retourner une liste de tous les genres disponibles dans la liste de films reçue en paramètre
+ * @param {array} movies :  La liste de films retournée par la fonction sortMovies.
+ */
 
 function populateSelect(movies){
 	var listeGenre = [];
@@ -82,6 +104,10 @@ function populateSelect(movies){
     return listeGenre; 
  }
 
+ /* La fonction sortMovies retourne une liste de films triée
+ * @param {array} movies :  La liste de films retournée par la fonction sortMovies.
+ * @param {string} genreFilter: Valeur sélectionnée dans la boîte de sélection.
+ */
 
 function filterMovies(movies, genreFilter ){
 	var listeFilms = [];
@@ -96,7 +122,9 @@ function filterMovies(movies, genreFilter ){
 
 }
 
-
+ /* La fonction displayMovie est appelée lorsque l'application à besoin d'afficher un film. 
+ * @param {Objet} movie :  Le film courant
+ */
 
 function displayMovie(movie){
 	var element = document.createElement("div");
