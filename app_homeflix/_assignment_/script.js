@@ -4,11 +4,30 @@ function validateUsername(value){
  
   var courriel = /^[a-z0-9.]+@homeflix.(org|ca|com)$/;
 
-  var username1 = /[a-zA-Z]{5}/; // ?!?
+  //var username1 = /[a-zA-Z]{5}/; // ?!?
 
-  var username2 = /[a-zA-Z0-9]{0,}/; 
-  //return (courriel.test(value) ||(username1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
-  return true;
+  //var username2 = /[a-zA-Z0-9]{0,}/; 
+
+  var username = true;
+  for (var i = 0; i < 5; i++) {
+  	if (!(value.charCodeAt(i) >= 65 && value.charCodeAt(i) <= 90 || 
+          value.charCodeAt(i) >= 97 && value.charCodeAt(i) <= 122)){
+  		username = false;
+        break;
+    }
+  }
+  if (value.length > 5 && username)
+  	for (var j = 5; j < value.length; j++) {
+		if (!(value.charCodeAt(j) >= 65 && value.charCodeAt(j) <= 90 || 
+			value.charCodeAt(j) >= 97 && value.charCodeAt(j) <= 122 ||
+			value.charCodeAt(j) >= 48 && value.charCodeAt(j) <= 57)){
+			username = false;
+            break;
+        }
+	}
+
+  return (courriel.test(value) ||username) //1.test(value.slice(0,4)) && username2.test(value.slice(5,)) ))
+  //return true;
 }
 
 function validatePassword(value){
@@ -88,7 +107,7 @@ function displayMovie(movie){
 			if (colorChosen == 1) var color = "c-main_item_cover -blue";
 			if (colorChosen == 2) var color = "c-main_item_cover -purple";
 			if (colorChosen == 3) var color = "c-main_item_cover -red";
-			cover.className =color      //color
+			cover.className = color  
 			element.appendChild(cover);
 			var preview = document.createElement("p");
 				preview.className = "c-main_item_preview";
